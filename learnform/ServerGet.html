@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <title>Hiển thị tham số URL</title>
+    <script>
+        // Hàm phân tích các tham số trên URL
+        function getUrlVars() {
+            var vars = {};
+            window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+                vars[key] = value;
+            });
+            return vars;
+        }
+
+        // Trích xuất giá trị từ URL và giải mã các ký tự đặc biệt (như %20, @)
+        var params = getUrlVars();
+        var ten = decodeURIComponent(params["txtten"] || "");
+        var email = decodeURIComponent(params["txtemail"] || "");
+    </script>
+</head>
+<body>
+    <form>
+        <table border="1">
+            <tr>
+                <td>User :</td>
+                <td id="iduser"></td>
+            </tr>
+            <tr>
+                <td>Email :</td>
+                <td id="idemail"></td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        document.getElementById("iduser").innerHTML = ten;
+        document.getElementById("idemail").innerHTML = email;
+    </script>
+</body>
+</html>
